@@ -20,10 +20,12 @@ pipeline{
          stage('Deploy-Tomcat'){
                steps{
                    sshagent(['tomcat']) {
-                    sh "scp -o StrictHostKeyChecking=no target/webapp.war centos@172.31.42.164:/opt/tomcat/webapps/"
-                    sh "ssh centos@172.31.42.164 /opt/tomcat/bin/shutdown.sh"
-                    sh "ssh centos@172.31.42.164 /opt/tomcat/bin/startup.sh"
-             
+                   ssh """
+                        scp -o StrictHostKeyChecking=no target/*.war centos@172.31.42.164:/opt/tomcat/webapps/
+                        ssh centos@172.31.42.164 /opt/tomcat/bin/shutdown.sh
+                        ssh centos@172.31.42.164 /opt/tomcat/bin/startup.sh
+                    
+                   """
                 }
 
              }
