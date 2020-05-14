@@ -1,4 +1,4 @@
-currentBuild.displayName="my-repo+"currentBuild.number
+currentBuild.displayName= "my-repo-#"+currentBuild.number
 pipeline{
     agent any
     
