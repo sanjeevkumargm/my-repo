@@ -21,7 +21,7 @@ pipeline{
                steps{
                    sshagent(['tomcat']) {
                    sh """
-                       'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/test-jenkinsfile/webapp/target/webapp.war.war centos@172.31.42.164:/opt/tomcat/webapps/'
+                       'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/test-jenkinsfile/webapp/target/webapp.war centos@172.31.42.164:/opt/tomcat/webapps/'
                        ssh centos@172.31.42.164 /opt/tomcat/bin/shutdown.sh
                        ssh centos@172.31.42.164 /opt/tomcat/bin/startup.sh
                        
